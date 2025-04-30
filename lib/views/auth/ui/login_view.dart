@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market/core/app_color.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
