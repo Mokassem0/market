@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:market/core/app_color.dart';
 import 'package:market/core/customformfield.dart';
+import 'package:market/core/login_type';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -46,7 +47,6 @@ class LoginView extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.all(20),
                           child: CustomTextFormField(
-                            
                             isPassword: true,
                             hintText: "Password",
                             labelText: "Password",
@@ -75,56 +75,14 @@ class LoginView extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 25),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                          children: [
-                            Text(
-                              "Login",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: AppColor.kBlackColor,
-                              ),
-                            ),
-                            MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              color: AppColor.kPrimaryColor,
-                              onPressed: () {},
-                              child: Icon(
-                                Icons.arrow_forward,
-                                color: AppColor.kWhiteColor,
-                              ),
-                            ),
-                          ],
+                        LoginType(
+                          text: "Login",
+                          onPressed: () {},
                         ),
                         SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                          children: [
-                            Text(
-                              "Login With Google",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: AppColor.kBlackColor,
-                              ),
-                            ),
-                            MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              color: AppColor.kPrimaryColor,
-                              onPressed: () {},
-                              child: Icon(
-                                Icons.arrow_forward,
-                                color: AppColor.kWhiteColor,
-                              ),
-                            ),
-                          ],
+                        LoginType(
+                          text: "Login With Google",
+                          onPressed: () {},
                         ),
                         SizedBox(height: 20),
                         Row(
@@ -163,3 +121,4 @@ class LoginView extends StatelessWidget {
     );
   }
 }
+
