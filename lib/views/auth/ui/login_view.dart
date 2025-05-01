@@ -61,29 +61,25 @@ class LoginView extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {},
-                          child: Container(
-                            margin: EdgeInsets.only(left: 170),
-                            child: Text(
-                              textAlign: TextAlign.end,
-                              "Forget Password?",
-                              style: TextStyle(
-                                color: AppColor.kPrimaryColor,
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                textAlign: TextAlign.end,
+                                "Forget Password?",
+                                style: TextStyle(
+                                  color: AppColor.kPrimaryColor,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
+                            ],
                           ),
                         ),
                         SizedBox(height: 25),
-                        LoginType(
-                          text: "Login",
-                          onPressed: () {},
-                        ),
+                        LoginType(text: "Login", onPressed: () {}),
                         SizedBox(height: 20),
-                        LoginType(
-                          text: "Login With Google",
-                          onPressed: () {},
-                        ),
+                        LoginType(text: "Login With Google", onPressed: () {}),
                         SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -96,6 +92,7 @@ class LoginView extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
+                            SizedBox(width: 5),
                             InkWell(
                               onTap: () {},
                               child: Text(
@@ -121,4 +118,3 @@ class LoginView extends StatelessWidget {
     );
   }
 }
-
