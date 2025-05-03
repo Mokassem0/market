@@ -7,12 +7,13 @@ class CustomTextFormField extends StatelessWidget {
     this.hintText,
     this.suffixIcon,
     this.labelText,
-    this.isPassword = false,
+    this.isPassword = false, this.keybordType,
   });
   final String? hintText;
   final Widget? suffixIcon;
   final String? labelText;
   final bool isPassword;
+  final TextInputType? keybordType;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class CustomTextFormField extends StatelessWidget {
         }
         return null;
       },
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: keybordType,
       decoration: InputDecoration(
         labelText: "$labelText",
         hintText: "$hintText",

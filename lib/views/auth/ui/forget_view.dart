@@ -44,6 +44,7 @@ class ForgetView extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.all(20),
                         child: CustomTextFormField(
+                          keybordType: TextInputType.emailAddress,
                           hintText: "Email",
                           labelText: "Email",
                         ),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:market/core/app_color.dart';
-import 'package:market/views/auth/ui/forget_view.dart' show ForgetView;
+import 'package:market/views/auth/ui/login_view.dart';
 import 'package:market/views/auth/ui/widget/customformfield.dart';
 import 'package:market/core/login_type';
-import 'package:market/views/auth/ui/widget/signin_view.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+class Signup extends StatelessWidget {
+  const Signup({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +41,14 @@ class LoginView extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.all(20),
                           child: CustomTextFormField(
+                            keybordType: TextInputType.name,
+                            hintText: "Name",
+                            labelText: "Name",
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.all(20),
+                          child: CustomTextFormField(
                             keybordType: TextInputType.emailAddress,
                             hintText: "Email",
                             labelText: "Email",
@@ -63,40 +70,19 @@ class LoginView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ForgetView(),
-                              ),
-                            );
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                textAlign: TextAlign.end,
-                                "Forget Password?",
-                                style: TextStyle(
-                                  color: AppColor.kPrimaryColor,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
                         SizedBox(height: 25),
-                        LoginType(text: "Login", onPressed: () {}),
+                        LoginType(text: "Sign up", onPressed: () {}),
                         SizedBox(height: 20),
-                        LoginType(text: "Login With Google", onPressed: () {}),
+                        LoginType(
+                          text: "Sign up With Google",
+                          onPressed: () {},
+                        ),
                         SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Don't have an account?",
+                              "Already have an account?",
                               style: TextStyle(
                                 fontSize: 18,
                                 color: AppColor.kBlackColor,
@@ -109,12 +95,12 @@ class LoginView extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Signup(),
+                                    builder: (context) => LoginView(),
                                   ),
                                 );
                               },
                               child: Text(
-                                "Sign Up",
+                                "Login",
                                 style: TextStyle(
                                   color: AppColor.kPrimaryColor,
                                   fontSize: 15,
