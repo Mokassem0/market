@@ -12,54 +12,58 @@ class ForgetView extends StatelessWidget {
       home: Scaffold(
         backgroundColor: AppColor.kScaffoldColor,
         body: SafeArea(
-          child: Column(
+          child: ListView(
             children: [
-              SizedBox(height: 75),
-              Container(
-                margin: EdgeInsets.all(20),
-                child: Text(
-                  "Enter Your Email To Reset Password",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.kBlackColor,
-                  ),
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  color: AppColor.kScaffoldColor,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColor.kWhiteColor,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  margin: EdgeInsets.all(35),
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 20),
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        child: CustomTextFormField(
-                          keybordType: TextInputType.emailAddress,
-                          hintText: "Email",
-                          labelText: "Email",
-                        ),
+              Column(
+                children: [
+                  SizedBox(height: 75),
+                  Container(
+                    margin: EdgeInsets.all(20),
+                    child: Text(
+                      "Enter Your Email To Reset Password",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.kBlackColor,
                       ),
-                      SizedBox(height: 15),
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        child: Custom_Material_Button(
-                          text: "Send",
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColor.kScaffoldColor,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: AppColor.kWhiteColor,
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      margin: EdgeInsets.all(35),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          SizedBox(height: 20),
+                          Container(
+                            margin: EdgeInsets.all(20),
+                            child: CustomTextFormField(
+                              keybordType: TextInputType.emailAddress,
+                              hintText: "Email",
+                              labelText: "Email",
+                            ),
+                          ),
+                          SizedBox(height: 15),
+                          Container(
+                            margin: EdgeInsets.all(20),
+                            child: Custom_Material_Button(
+                              text: "Send",
+                              onPressed: () {},
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

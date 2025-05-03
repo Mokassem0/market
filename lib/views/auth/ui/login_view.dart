@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:market/core/app_color.dart';
-
 import 'package:market/views/auth/ui/forget_view.dart' show ForgetView;
 import 'package:market/views/auth/ui/widget/customformfield.dart';
 import 'package:market/views/auth/ui/signin_view.dart';
