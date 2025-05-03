@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:market/core/app_color.dart';
 import 'package:market/views/auth/ui/login_view.dart';
 import 'package:market/views/auth/ui/widget/customformfield.dart';
-import 'package:market/core/login_type';
+import 'package:market/views/auth/ui/widget/login_type.dart';
 
 class Signup extends StatelessWidget {
   const Signup({Key? key}) : super(key: key);
