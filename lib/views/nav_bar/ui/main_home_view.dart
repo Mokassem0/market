@@ -1,25 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:market/core/app_color.dart';
+import 'package:market/views/favorite/ui/favorite_view.dart';
+import 'package:market/views/home/ui/home_view.dart';
+import 'package:market/views/profile/ui/profile_view.dart';
+import 'package:market/views/store/ui/store_view.dart';
 
 class MainHomeView extends StatelessWidget {
-  const MainHomeView({Key? key}) : super(key: key);
+   MainHomeView({Key? key}) : super(key: key);
+  final List<Widget> views =[
+    HomeView(),
+    StoreView(),
+    FavoriteView(),
+    ProfileView(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.kScaffoldColor,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Container(child: Text("test")),
-        ),
+        child: views[0], 
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(color: AppColor.kWhiteColor),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
           child: GNav(
+
             rippleColor:
                 AppColor.kPrimaryColor, // tab button ripple color when pressed
             hoverColor: AppColor.kPrimaryColor, // tab button hover color
