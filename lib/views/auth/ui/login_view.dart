@@ -4,6 +4,7 @@ import 'package:market/views/auth/ui/forget_view.dart' show ForgetView;
 import 'package:market/views/auth/ui/widget/customformfield.dart';
 import 'package:market/views/auth/ui/signin_view.dart';
 import 'package:market/views/auth/ui/widget/login_type.dart';
+import 'package:market/views/nav_bar/ui/main_home_view.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -88,7 +89,15 @@ class LoginView extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 25),
-                        LoginType(text: "Login", onPressed: () {}),
+                        LoginType(text: "Login", onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainHomeView(),
+                            ),
+                          );
+
+                        }),
                         SizedBox(height: 20),
                         LoginType(text: "Login With Google", onPressed: () {}),
                         SizedBox(height: 20),
