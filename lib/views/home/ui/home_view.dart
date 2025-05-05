@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:market/core/app_color.dart';
 import 'package:market/core/components/custom_search_field.dart';
 
 class HomeView extends StatelessWidget {
@@ -12,6 +11,8 @@ class HomeView extends StatelessWidget {
       child: ListView(
         children: [
           CustomSearchField(),
+          SizedBox(height: 20),
+          Image.asset("assets/images/buy.jpg"),
         ],
       ),
     );
