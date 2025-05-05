@@ -24,6 +24,13 @@ class CustomSearchField extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: AppColor.kBordersideColor, width: 2),
         ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: const Color.fromARGB(255, 138, 129, 129),
+            width: 2,
+          ),
+        ),
       ),
     );
   }
