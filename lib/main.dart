@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:market/views/auth/ui/login_view.dart';
+import 'package:market/views/nav_bar/ui/main_home_view.dart';
 
 void main() {
-  runApp( Market());
+  runApp(Market());
 }
 
 class Market extends StatelessWidget {
@@ -17,7 +18,7 @@ class Market extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginView(),
+      home: MainHomeView(),
     );
   }
 }

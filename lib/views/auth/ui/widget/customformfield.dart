@@ -7,7 +7,8 @@ class CustomTextFormField extends StatelessWidget {
     this.hintText,
     this.suffixIcon,
     this.labelText,
-    this.isPassword = false, this.keybordType,
+    this.isPassword = false,
+    this.keybordType,
   });
   final String? hintText;
   final Widget? suffixIcon;
@@ -22,7 +23,7 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: isPassword,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return "Please enter your email";
+          return "This field is required";
         }
         return null;
       },
