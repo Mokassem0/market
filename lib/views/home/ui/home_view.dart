@@ -22,6 +22,30 @@ class HomeView extends StatelessWidget {
           ),
           SizedBox(height: 15),
           CategoriesList(),
+          SizedBox(height: 15),
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(16),
+                        bottomLeft: Radius.circular(16),
+                        bottomRight: Radius.circular(16),
+                      ),
+                      child: Image.network(
+                        "https://img.freepik.com/premium-psd/refrigerator-sale-promotional-poster-design-template_987701-2795.jpg?w=740",
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

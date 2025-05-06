@@ -1,11 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:market/core/app_color.dart';
 
 class CategoriesList extends StatelessWidget {
-  const CategoriesList({
-    super.key,
-  });
+  const CategoriesList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +19,10 @@ class CategoriesList extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: AppColor.kPrimaryColor,
-                  foregroundColor: AppColor.kBordersideColor,
+                  foregroundColor: AppColor.kWhiteColor,
                   child: Icon(categories[index].icon, size: 30),
                 ),
-    
+
                 Text(categories[index].name),
               ],
             ),
