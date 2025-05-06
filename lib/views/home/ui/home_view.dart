@@ -38,7 +38,25 @@ class HomeView extends StatelessWidget {
                         bottomRight: Radius.circular(16),
                       ),
                       child: Image.network(
-                        "https://img.freepik.com/premium-psd/refrigerator-sale-promotional-poster-design-template_987701-2795.jpg?w=740",
+                        "https://img.freepik.com/premium-psd/scifi-futuristic-room-podium-product-display_401134-692.jpg?ga=GA1.1.1613592830.1746549167&semt=ais_hybrid&w=740",
+                      ),
+                    ),
+                    Positioned(
+                      child: Container(
+                        width: 65,
+                        height: 40,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: AppColor.kPrimaryColor,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(16),
+                            bottomRight: Radius.circular(16),
+                          ),
+                        ),
+                        child: Text(
+                          "10% off",
+                          style: TextStyle(color: AppColor.kWhiteColor),
+                        ),
                       ),
                     ),
                   ],
