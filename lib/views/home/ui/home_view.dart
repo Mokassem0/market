@@ -61,6 +61,69 @@ class HomeView extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: 15),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Product Name",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.favorite,
+                              color: AppColor.kGreyColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 5),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                "100\$",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+
+                              Text(
+                                "125\$",
+                                style: TextStyle(
+                                  decoration: TextDecoration.lineThrough,
+                                  color: AppColor.kGreyColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                          MaterialButton(
+                            height: 40,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            onPressed: () {},
+                            child: Text("Buy Now"),
+                            color: AppColor.kPrimaryColor,
+                            textColor: AppColor.kWhiteColor,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
