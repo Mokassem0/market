@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market/core/app_color.dart';
+import 'package:market/views/profile/ui/edit_name.dart';
 import 'package:market/views/profile/ui/widget/custom_card_btn.dart';
 
 class ProfileView extends StatelessWidget {
@@ -36,9 +37,13 @@ class ProfileView extends StatelessWidget {
                 Text("User Eamil", style: TextStyle(fontSize: 24)),
                 SizedBox(height: 10),
                 CustomRowCardBtn(
-                  title: "Edit Profile",
+                  title: "Edit Name",
                   icon: Icons.person,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(
+                      context,
+                    ).push(MaterialPageRoute(builder: (context) => EditName()));
+                  },
                 ),
                 SizedBox(height: 10),
                 CustomRowCardBtn(
