@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:market/core/app_color.dart';
 import 'package:market/core/components/Custom_prodect_card.dart';
 import 'package:market/core/components/custom_search_field.dart';
 import 'package:market/views/home/ui/widget/categories_list.dart';
