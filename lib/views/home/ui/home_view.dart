@@ -13,6 +13,13 @@ class HomeView extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: ListView(
         children: [
+          Center(
+            child: Text(
+              "Welcome to Mo Market",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+          ),
+          SizedBox(height: 10),
           CustomSearchField(),
           SizedBox(height: 20),
           Image.asset("assets/images/buy.jpg"),
