@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market/core/app_color.dart';
+import 'package:market/views/profile/ui/widget/custom_card_btn.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -34,31 +35,22 @@ class ProfileView extends StatelessWidget {
                 SizedBox(height: 10),
                 Text("User Eamil", style: TextStyle(fontSize: 24)),
                 SizedBox(height: 10),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  color: AppColor.kPrimaryColor,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(Icons.person, color: AppColor.kWhiteColor),
-                        Text(
-                          "Edit Profile",
-                          style: TextStyle(
-                            color: AppColor.kWhiteColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: AppColor.kWhiteColor,
-                        ),
-                      ],
-                    ),
-                  ),
+                CustomRowCardBtn(
+                  title: "Edit Profile",
+                  icon: Icons.person,
+                  onTap: () {},
+                ),
+                SizedBox(height: 10),
+                CustomRowCardBtn(
+                  title: "My Orders",
+                  icon: Icons.shopping_cart,
+                  onTap: () {},
+                ),
+                SizedBox(height: 10),
+                CustomRowCardBtn(
+                  title: "Logout",
+                  icon: Icons.logout,
+                  onTap: () {},
                 ),
               ],
             ),
