@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:market/core/app_color.dart';
 import 'package:market/views/profile/ui/edit_name.dart';
+import 'package:market/views/profile/ui/my_order.dart';
 import 'package:market/views/profile/ui/widget/custom_card_btn.dart';
 
 class ProfileView extends StatelessWidget {
@@ -49,7 +50,11 @@ class ProfileView extends StatelessWidget {
                 CustomRowCardBtn(
                   title: "My Orders",
                   icon: Icons.shopping_cart,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(
+                      context,
+                    ).push(MaterialPageRoute(builder: (context) => MyOrder()));
+                  },
                 ),
                 SizedBox(height: 10),
                 CustomRowCardBtn(
