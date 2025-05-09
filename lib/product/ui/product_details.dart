@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:market/core/components/function/AppBar.dart';
+import 'package:market/product/ui/widget/comments_list.dart';
+import 'package:market/views/auth/ui/widget/customformfield.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({Key? key}) : super(key: key);
@@ -53,7 +55,7 @@ class ProductDetails extends StatelessWidget {
                   initialRating: 3,
                   minRating: 1,
                   direction: Axis.horizontal,
-                  allowHalfRating: true,
+                  allowHalfRating: false,
                   itemCount: 5,
                   itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
                   itemBuilder:
@@ -62,6 +64,20 @@ class ProductDetails extends StatelessWidget {
                     print(rating);
                   },
                 ),
+                SizedBox(height: 40),
+                CustomTextFormField(
+                  hintText: "Feedback",
+                  labelText: "Type your Feedback",
+                  suffixIcon: Icon(Icons.send),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+
+                  children: [Text("Comments", style: TextStyle(fontSize: 18))],
+                ),
+                SizedBox(height: 20),
+                CommentList(),
               ],
             ),
           ),
