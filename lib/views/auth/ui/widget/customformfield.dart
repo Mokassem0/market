@@ -8,17 +8,20 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.labelText,
     this.isPassword = false,
-    this.keybordType,
+    this.keybordType, 
+    this.controller,
   });
   final String? hintText;
   final Widget? suffixIcon;
   final String? labelText;
   final bool isPassword;
   final TextInputType? keybordType;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       obscuringCharacter: "*",
       obscureText: isPassword,
       validator: (value) {

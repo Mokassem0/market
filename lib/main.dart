@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:market/views/auth/logic/cubit/authentication_cubit.dart';
 import 'package:market/views/auth/ui/login_view.dart';
 import 'package:market/views/nav_bar/ui/main_home_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -18,14 +20,17 @@ class Market extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Mo Market',
-      theme: ThemeData(
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    return BlocProvider(
+      create: (context) => AuthenticationCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Mo Market',
+        theme: ThemeData(
+          // tested with just a hot reload.
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
+        home: LoginView(),
       ),
-      home: MainHomeView(),
     );
   }
 }
