@@ -20,6 +20,7 @@ class _SignupState extends State<Signup> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool isPasswordHidden = true;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
@@ -95,13 +96,18 @@ class _SignupState extends State<Signup> {
                                         controller: _passwordController,
                                         keybordType:
                                             TextInputType.visiblePassword,
-                                        isPassword: true,
+                                        isPassword: isPasswordHidden,
                                         hintText: "Password",
                                         labelText: "Password",
                                         suffixIcon: IconButton(
                                           onPressed: () {},
                                           icon: IconButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              setState(() {
+                                                isPasswordHidden =
+                                                    !isPasswordHidden;
+                                              });
+                                            },
                                             icon: Icon(Icons.visibility_off),
                                           ),
                                         ),

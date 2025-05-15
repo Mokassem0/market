@@ -20,6 +20,7 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool isPasswordHidden = true;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
@@ -84,14 +85,23 @@ class _LoginViewState extends State<LoginView> {
                                         controller: _passwordController,
                                         keybordType:
                                             TextInputType.visiblePassword,
-                                        isPassword: true,
+                                        isPassword: isPasswordHidden,
                                         hintText: "Password",
                                         labelText: "Password",
                                         suffixIcon: IconButton(
                                           onPressed: () {},
                                           icon: IconButton(
-                                            onPressed: () {},
-                                            icon: Icon(Icons.visibility_off),
+                                            onPressed: () {
+                                              setState(() {
+                                                isPasswordHidden =
+                                                    !isPasswordHidden;
+                                              });
+                                            },
+                                            icon: Icon(
+                                              isPasswordHidden
+                                                  ? Icons.visibility_off
+                                                  : Icons.visibility,
+                                            ),
                                           ),
                                         ),
                                       ),
