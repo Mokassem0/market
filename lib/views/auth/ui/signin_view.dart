@@ -27,9 +27,7 @@ class _SignupState extends State<Signup> {
         if (state is SignupSuccess) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(
-              builder: (context) => MainHomeView(),
-            ),
+            MaterialPageRoute(builder: (context) => MainHomeView()),
           );
         }
         if (state is SignupError) {

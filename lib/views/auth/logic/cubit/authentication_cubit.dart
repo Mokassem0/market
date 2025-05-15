@@ -14,7 +14,7 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     try {
       await client.auth.signInWithPassword(email: email, password: password);
       emit(LoginSuccess());
-    } on AuthApiException catch (e) {
+    } on AuthException catch (e) {
       log(e.toString());
       emit(LoginError(e.message));
     } catch (e) {
@@ -23,13 +23,16 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     }
   }
 
-  
-  Future<void> register({required String name,required String email, required String password}) async {
+  Future<void> register({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
     emit(SignupLoding());
     try {
       await client.auth.signUp(email: email, password: password);
       emit(SignupSuccess());
-    } on AuthApiException catch (e) {
+    } on AuthException catch (e) {
       log(e.toString());
       emit(SignupError(e.message));
     } catch (e) {

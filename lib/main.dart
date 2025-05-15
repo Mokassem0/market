@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:market/splash.dart';
 import 'package:market/views/auth/logic/cubit/authentication_cubit.dart';
 import 'package:market/views/auth/ui/login_view.dart';
 import 'package:market/views/nav_bar/ui/main_home_view.dart';
@@ -20,6 +21,9 @@ class Market extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("user id: ${Supabase.instance.client.auth.currentUser?.id}");
+    print("session: ${Supabase.instance.client.auth.currentSession}");
+    SupabaseClient client = Supabase.instance.client;
     return BlocProvider(
       create: (context) => AuthenticationCubit(),
       child: MaterialApp(
@@ -28,8 +32,9 @@ class Market extends StatelessWidget {
         theme: ThemeData(
           // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
         ),
-        home: LoginView(),
+        home: SplashView(),
       ),
     );
   }
