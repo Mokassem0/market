@@ -25,7 +25,7 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
-        if (state is LoginSuccess) {
+        if (state is LoginSuccess || state is GoogleSignInSuccess) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => MainHomeView()),
@@ -146,7 +146,9 @@ class _LoginViewState extends State<LoginView> {
                                     SizedBox(height: 20),
                                     LoginType(
                                       text: "Login With Google",
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        cubit.googleSignIn();
+                                      },
                                     ),
                                     SizedBox(height: 20),
                                     Row(

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:developer';
 import 'package:meta/meta.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -39,5 +40,36 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       log(e.toString());
       emit(SignupError(e.toString()));
     }
+  }
+  GoogleSignInAccount? googleUser;
+
+  Future<AuthResponse> googleSignIn() async {
+    emit(GoogleSignInLoading());
+
+    const webClientId = '503058702267-ld29v4quneer5u98g8otbgh2egoq7mrv.apps.googleusercontent.com';
+
+    final GoogleSignIn googleSignIn = GoogleSignIn(
+      serverClientId: webClientId,
+    );
+    googleUser = await googleSignIn.signIn();
+    if (googleUser == null) {
+      return AuthResponse();
+    }
+    final googleAuth = await googleUser!.authentication;
+    final accessToken = googleAuth.accessToken;
+    final idToken = googleAuth.idToken;
+
+    if (accessToken == null && idToken == null) {
+      emit(GoogleSignInError('Google sign-in failed: missing access token and id token'));
+      return AuthResponse();
+    }
+
+    AuthResponse response=await client.auth.signInWithIdToken(
+      provider: OAuthProvider.google,
+      idToken: idToken ?? '',
+      accessToken: accessToken,
+    );
+    emit(GoogleSignInSuccess());
+    return response;
   }
 }

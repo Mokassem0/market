@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:market/core/my_observer.dart';
 import 'package:market/views/auth/logic/cubit/authentication_cubit.dart';
 import 'package:market/views/auth/ui/login_view.dart';
 import 'package:market/views/nav_bar/ui/main_home_view.dart';
@@ -12,6 +13,7 @@ void main() async {
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsb2dob3pmdHBqZndpeXBidHVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY4OTc5MDksImV4cCI6MjA2MjQ3MzkwOX0.HGBhmzokzJN7ZLQbgtRUmRDAT6k6DuyxVSrGpCZ7iAE',
   );
+  Bloc.observer = MyObserver();
   runApp(Market());
 }
 
