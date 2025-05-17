@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:market/core/app_color.dart';
+import 'package:market/views/auth/logic/cubit/authentication_cubit.dart';
+import 'package:market/views/auth/ui/login_view.dart';
 import 'package:market/views/profile/ui/edit_name.dart';
 import 'package:market/views/profile/ui/my_order.dart';
 import 'package:market/views/profile/ui/widget/custom_card_btn.dart';
@@ -9,64 +12,91 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.kScaffoldColor,
-      body: ListView(
-        children: [
-          SizedBox(height: 75),
-          Container(
-            padding: const EdgeInsets.all(15),
-            color: AppColor.kWhiteColor,
-            child: Column(
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundColor: AppColor.kPrimaryColor,
-                  foregroundColor: AppColor.kWhiteColor,
-                  child: Icon(
-                    Icons.person,
-                    size: 50,
+    return BlocConsumer<AuthenticationCubit, AuthenticationState>(
+      listener: (context, state) {
+        if (state is LogoutSuccess) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => LoginView()),
+          );
+        }
+        if (state is LogoutError) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message)));
+        }
+      },
+      builder: (context, state) {
+        return state is LogoutLoading
+            ? Center(child: CircularProgressIndicator())
+            : Scaffold(
+              backgroundColor: AppColor.kScaffoldColor,
+              body: ListView(
+                children: [
+                  SizedBox(height: 75),
+                  Container(
+                    padding: const EdgeInsets.all(15),
                     color: AppColor.kWhiteColor,
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundColor: AppColor.kPrimaryColor,
+                          foregroundColor: AppColor.kWhiteColor,
+                          child: Icon(
+                            Icons.person,
+                            size: 50,
+                            color: AppColor.kWhiteColor,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          "User Name",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text("User Eamil", style: TextStyle(fontSize: 24)),
+                        SizedBox(height: 10),
+                        CustomRowCardBtn(
+                          title: "Edit Name",
+                          icon: Icons.person,
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => EditName(),
+                              ),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 10),
+                        CustomRowCardBtn(
+                          title: "My Orders",
+                          icon: Icons.shopping_cart,
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => MyOrder(),
+                              ),
+                            );
+                          },
+                        ),
+                        SizedBox(height: 10),
+                        CustomRowCardBtn(
+                          title: "Logout",
+                          icon: Icons.logout,
+                          onTap: () async {
+                            await context.read<AuthenticationCubit>().signOut();
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "User Name",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 10),
-                Text("User Eamil", style: TextStyle(fontSize: 24)),
-                SizedBox(height: 10),
-                CustomRowCardBtn(
-                  title: "Edit Name",
-                  icon: Icons.person,
-                  onTap: () {
-                    Navigator.of(
-                      context,
-                    ).push(MaterialPageRoute(builder: (context) => EditName()));
-                  },
-                ),
-                SizedBox(height: 10),
-                CustomRowCardBtn(
-                  title: "My Orders",
-                  icon: Icons.shopping_cart,
-                  onTap: () {
-                    Navigator.of(
-                      context,
-                    ).push(MaterialPageRoute(builder: (context) => MyOrder()));
-                  },
-                ),
-                SizedBox(height: 10),
-                CustomRowCardBtn(
-                  title: "Logout",
-                  icon: Icons.logout,
-                  onTap: () {},
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+                ],
+              ),
+            );
+      },
     );
   }
 }
