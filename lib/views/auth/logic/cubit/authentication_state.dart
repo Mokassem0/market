@@ -40,3 +40,9 @@ final class LogoutError extends AuthenticationState {
   final String message;
   LogoutError(this.message);
 }
+
+final class PasswordResetLoading extends AuthenticationState {}
+
+final class PasswordResetSuccess extends AuthenticationState {}
+
+final class PasswordResetError extends AuthenticationState {}
