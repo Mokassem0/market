@@ -46,3 +46,9 @@ final class PasswordResetLoading extends AuthenticationState {}
 final class PasswordResetSuccess extends AuthenticationState {}
 
 final class PasswordResetError extends AuthenticationState {}
+
+final class UserDataAddedLoading extends AuthenticationState {}
+
+final class UserDataAddedSuccess extends AuthenticationState {}
+
+final class UserDataAddedError extends AuthenticationState {}
