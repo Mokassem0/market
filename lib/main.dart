@@ -26,7 +26,7 @@ class Market extends StatelessWidget {
     print("session: ${Supabase.instance.client.auth.currentSession}");
     SupabaseClient client = Supabase.instance.client;
     return BlocProvider(
-      create: (context) => AuthenticationCubit(),
+      create: (context) => AuthenticationCubit()..getUserData(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Mo Market',

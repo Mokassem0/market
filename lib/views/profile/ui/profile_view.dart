@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:market/core/app_color.dart';
+import 'package:market/product/model/usermodel.dart';
 import 'package:market/views/auth/logic/cubit/authentication_cubit.dart';
 import 'package:market/views/auth/ui/login_view.dart';
 import 'package:market/views/profile/ui/edit_name.dart';
@@ -12,6 +13,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserDataModel user = context.read<AuthenticationCubit>().userDataModel!;
     return BlocConsumer<AuthenticationCubit, AuthenticationState>(
       listener: (context, state) {
         if (state is LogoutSuccess) {
@@ -50,14 +52,17 @@ class ProfileView extends StatelessWidget {
                         ),
                         SizedBox(height: 20),
                         Text(
-                          "User Name",
+                          user.name ?? "user.name",
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(height: 10),
-                        Text("User Eamil", style: TextStyle(fontSize: 24)),
+                        Text(
+                          user.email ?? "User Eamil",
+                          style: TextStyle(fontSize: 24),
+                        ),
                         SizedBox(height: 10),
                         CustomRowCardBtn(
                           title: "Edit Name",
