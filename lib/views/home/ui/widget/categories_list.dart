@@ -36,10 +36,10 @@ class CategoriesList extends StatelessWidget {
 List<Category> categories = [
   Category(icon: Icons.sports, name: "Sports"),
   Category(icon: Icons.tv, name: "Electronics"),
-  Category(icon: Icons.collections, name: "Collections"),
+  Category(icon: Icons.shopping_bag_sharp, name: "Fashion"),
   Category(icon: Icons.book, name: "Books"),
   Category(icon: Icons.games, name: "Games"),
-  Category(icon: Icons.bike_scooter, name: "Bikes"),
+  Category(icon: Icons.handyman_rounded, name: "Tools"),
 ];
 
 class Category {
