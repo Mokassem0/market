@@ -25,7 +25,7 @@ class LoginType extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           color: AppColor.kPrimaryColor,
-          onPressed:onPressed,
+          onPressed: onPressed,
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Icon(Icons.arrow_forward, color: AppColor.kWhiteColor),

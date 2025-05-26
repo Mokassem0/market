@@ -8,7 +8,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.labelText,
     this.isPassword = false,
-    this.keybordType, 
+    this.keybordType,
     this.controller,
   });
   final String? hintText;

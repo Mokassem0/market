@@ -11,13 +11,16 @@ class ApiServices {
   Future<Response> getData(String path) async {
     return await _dio.get(path);
   }
+
   //استخدمنا path كمسار للطلب Map<String, dynamic> data ارسال بيانات
   Future<Response> postData(String path, Map<String, dynamic> data) async {
     return await _dio.post(path, data: data);
   }
+
   Future<Response> patchData(String path, Map<String, dynamic> data) async {
     return await _dio.patch(path, data: data);
   }
+
   Future<Response> deleteData(String path) async {
     return await _dio.delete(path);
   }

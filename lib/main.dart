@@ -9,11 +9,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Supabase.initialize(
-    url: url,
-    anonKey:
-        anonKey,
-  );
+  await Supabase.initialize(url: url, anonKey: anonKey);
   Bloc.observer = MyObserver();
   runApp(Market());
 }
