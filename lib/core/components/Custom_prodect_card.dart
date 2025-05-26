@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:market/core/app_color.dart';
+import 'package:market/models/product_model/product_model.dart';
 import 'package:market/product/ui/product_details.dart';
 
 class CutomProductCard extends StatelessWidget {
-  const CutomProductCard({
-    super.key,
-    required this.imgUrl,
-    required this.productName,
-    required this.productPrice,
-    required this.productDiscountPrice,
-  });
-  final String imgUrl;
-  final String productName;
-  final String productPrice;
-  final String productDiscountPrice;
-
+  const CutomProductCard({super.key, this.product});
+  final ProductModel? product;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -36,7 +27,13 @@ class CutomProductCard extends StatelessWidget {
                     bottomLeft: Radius.circular(16),
                     bottomRight: Radius.circular(16),
                   ),
-                  child: Image.network(imgUrl),
+                  child: Image.network(
+                    product?.imageUrl ??
+                        "https://img.freepik.com/free-photo/modern-comfortable-workplace-home-there-are-computer-laptop-table_613910-13268.jpg?ga=GA1.1.164920025.1746638074&semt=ais_hybrid&w=740",
+                    width: double.infinity,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 Positioned(
                   child: Container(
@@ -51,7 +48,7 @@ class CutomProductCard extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      "10% off",
+                      "${product!.sale}% off",
                       style: TextStyle(color: AppColor.kWhiteColor),
                     ),
                   ),
@@ -67,7 +64,7 @@ class CutomProductCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        " $productName",
+                        " ${product?.productName ?? "Product Name"}",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -87,7 +84,7 @@ class CutomProductCard extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            "$productPrice",
+                            "${product?.price ?? "100"}\$",
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -95,7 +92,7 @@ class CutomProductCard extends StatelessWidget {
                           ),
 
                           Text(
-                            "$productDiscountPrice",
+                            "${product?.oldPrice ?? "90"}",
                             style: TextStyle(
                               decoration: TextDecoration.lineThrough,
                               color: AppColor.kGreyColor,

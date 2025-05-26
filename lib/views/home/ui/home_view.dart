@@ -55,11 +55,7 @@ class HomeView extends StatelessWidget {
                   itemCount: products.length,
                   itemBuilder: (context, index) {
                     return CutomProductCard(
-                      imgUrl:
-                          "https://img.freepik.com/free-photo/modern-comfortable-workplace-home-there-are-computer-laptop-table_613910-13268.jpg?ga=GA1.1.164920025.1746638074&semt=ais_hybrid&w=740",
-                      productName: "Product Name",
-                      productPrice: "\$100",
-                      productDiscountPrice: "\$90",
+                      product: products[index],
                     );
                   },
                 );
