@@ -1,82 +1,128 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:market/core/components/function/AppBar.dart';
+import 'package:market/models/product_model/product_model.dart';
 import 'package:market/product/ui/widget/comments_list.dart';
 import 'package:market/views/auth/ui/widget/customformfield.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({Key? key}) : super(key: key);
+  const ProductDetails({Key? key, this.products}) : super(key: key);
+  final ProductModel? products;
 
   @override
   Widget build(BuildContext context) {
+    final product = products;
+
     return Scaffold(
-      appBar: buildCustomAppBar(context, "Product Name"),
+      appBar: buildCustomAppBar(context, product?.productName ?? "Product Name"),
       body: ListView(
         children: [
-          Image.network(
-            "https://img.freepik.com/free-photo/modern-comfortable-workplace-home-there-are-computer-laptop-table_613910-13268.jpg?ga=GA1.1.164920025.1746638074&semt=ais_hybrid&w=740",
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(16),
+              bottomLeft: Radius.circular(16),
+              bottomRight: Radius.circular(16),
+            ),
+            child: Image.network(
+              product?.imageUrl ??
+                  "https://img.freepik.com/free-photo/modern-comfortable-workplace-home-there-are-computer-laptop-table_613910-13268.jpg?ga=GA1.1.164920025.1746638074&semt=ais_hybrid&w=740",
+              width: double.infinity,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Product Name", style: TextStyle(fontSize: 18)),
-                    Text("\$100", style: TextStyle(fontSize: 18)),
+                    Text(
+                      product?.productName ?? "Product Name",
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "${product?.price ?? "100"}\$",
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        if (product?.oldPrice != null)
+                          Text(
+                            "${product?.oldPrice}\$",
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey,
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                          ),
+                      ],
+                    ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Text("3 "),
-                        Icon(Icons.star, color: Colors.amber),
+                        const Icon(Icons.star, color: Colors.amber),
                       ],
                     ),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.favorite, color: Colors.grey),
+                      icon: const Icon(Icons.favorite, color: Colors.grey),
                     ),
                   ],
                 ),
-                SizedBox(height: 25),
+                const SizedBox(height: 25),
                 Center(
                   child: Text(
-                    "Product Description",
-                    style: TextStyle(fontSize: 16),
+                    product?.description ?? "No description available.",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
-                SizedBox(height: 20),
-                RatingBar.builder(
-                  initialRating: 3,
-                  minRating: 1,
-                  direction: Axis.horizontal,
-                  allowHalfRating: false,
-                  itemCount: 5,
-                  itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                  itemBuilder:
-                      (context, _) => Icon(Icons.star, color: Colors.amber),
-                  onRatingUpdate: (rating) {
-                    print(rating);
-                  },
+                const SizedBox(height: 20),
+                Center(
+                  child: RatingBar.builder(
+                    initialRating: (3),
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: false,
+                    itemCount: 5,
+                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) =>
+                        const Icon(Icons.star, color: Colors.amber),
+                    onRatingUpdate: (rating) {
+                      print(rating);
+                    },
+                  ),
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 CustomTextFormField(
                   hintText: "Feedback",
                   labelText: "Type your Feedback",
-                  suffixIcon: Icon(Icons.send),
+                  suffixIcon: const Icon(Icons.send),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-
-                  children: [Text("Comments", style: TextStyle(fontSize: 18))],
+                  children: const [
+                    Text("Comments", style: TextStyle(fontSize: 18)),
+                  ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 CommentList(),
               ],
             ),

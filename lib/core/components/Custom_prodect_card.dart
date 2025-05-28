@@ -9,10 +9,19 @@ class CutomProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(
-          context,
-        ).push(MaterialPageRoute(builder: (context) => ProductDetails()));
+      
+        onTap:
+        () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder:
+                  (context) => ProductDetails(
+                    products: product,
+                  ), // product هنا هو العنصر الذي ضغطت عليه
+            ),
+          );
+        
       },
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
