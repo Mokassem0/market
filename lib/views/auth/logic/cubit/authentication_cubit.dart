@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:market/product/model/usermodel.dart';
+import 'package:market/product/logic/models/usermodel.dart';
 import 'dart:developer';
 import 'package:meta/meta.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

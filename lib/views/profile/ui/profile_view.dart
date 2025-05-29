@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:market/core/app_color.dart';
-import 'package:market/product/model/usermodel.dart';
+import 'package:market/product/logic/models/usermodel.dart';
 import 'package:market/views/auth/logic/cubit/authentication_cubit.dart';
 import 'package:market/views/auth/ui/login_view.dart';
 import 'package:market/views/profile/ui/edit_name.dart';

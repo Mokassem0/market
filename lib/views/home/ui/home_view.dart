@@ -48,17 +48,18 @@ class HomeView extends StatelessWidget {
                 // TODO: implement listener
               },
               builder: (context, state) {
-                List<ProductModel> products = context.read<HomeCubit>().products;
-                return state is GetDataLoading?Center(child: CircularProgressIndicator(),): ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: products.length,
-                  itemBuilder: (context, index) {
-                    return CutomProductCard(
-                      product: products[index],
+                List<ProductModel> products =
+                    context.read<HomeCubit>().products;
+                return state is GetDataLoading
+                    ? Center(child: CircularProgressIndicator())
+                    : ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        return CutomProductCard(product: products[index]);
+                      },
                     );
-                  },
-                );
               },
             ),
           ),

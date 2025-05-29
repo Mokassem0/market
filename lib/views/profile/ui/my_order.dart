@@ -12,9 +12,7 @@ class MyOrder extends StatelessWidget {
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
-          return CutomProductCard(
-            product: null, 
-          );
+          return CutomProductCard(product: null);
         },
       ),
     );

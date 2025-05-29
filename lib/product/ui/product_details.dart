@@ -14,7 +14,10 @@ class ProductDetails extends StatelessWidget {
     final product = products;
 
     return Scaffold(
-      appBar: buildCustomAppBar(context, product?.productName ?? "Product Name"),
+      appBar: buildCustomAppBar(
+        context,
+        product?.productName ?? "Product Name",
+      ),
       body: ListView(
         children: [
           ClipRRect(
@@ -102,8 +105,9 @@ class ProductDetails extends StatelessWidget {
                     allowHalfRating: false,
                     itemCount: 5,
                     itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    itemBuilder: (context, _) =>
-                        const Icon(Icons.star, color: Colors.amber),
+                    itemBuilder:
+                        (context, _) =>
+                            const Icon(Icons.star, color: Colors.amber),
                     onRatingUpdate: (rating) {
                       print(rating);
                     },

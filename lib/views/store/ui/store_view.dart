@@ -25,9 +25,7 @@ class StoreView extends StatelessWidget {
             physics: NeverScrollableScrollPhysics(),
             itemCount: 10,
             itemBuilder: (context, index) {
-              return CutomProductCard(
-                product: null, 
-              );
+              return CutomProductCard(product: null);
             },
           ),
         ],
