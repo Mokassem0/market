@@ -16,21 +16,32 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   List<RateModel> rates = [];
 
   int averageRate = 0;
-
-  Future<void> getRate({required String productId}) async {
-    emit(GetRateLoading());
-    try {
-     Response response= await _apiServices.getData(
-        "rates_table?select=*&for_proudct=eq.$productId",
-      );
-      for (var rate in response.data) {
-        rates.add(RateModel.fromJson(rate));
-
-      }
-      emit(GetRateSuccess());
-    } catch (e) {
-      log(e.toString());
-      emit(GetRateError());
+Future<void> getRate({required String productid}) async {
+  emit(GetRateLoading());
+  rates.clear();
+  averageRate = 0;
+  try {
+    Response response = await _apiServices.getData(
+      "rates_table?select=*&for_product=eq.$productid", // صحح اسم العمود هنا
+    );
+    for (var rate in response.data) {
+      rates.add(RateModel.fromJson(rate));
     }
+    for (var userRate in rates) {
+      if (userRate.rates != null) {
+        averageRate += userRate.rates!;
+      }
+    }
+    if (rates.isNotEmpty) {
+      averageRate = (averageRate / rates.length).round();
+    } else {
+      averageRate = 0;
+    }
+    log(averageRate.toString());
+    emit(GetRateSuccess());
+  } catch (e) {
+    log(e.toString());
+    emit(GetRateError());
   }
+}
 }
