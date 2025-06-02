@@ -124,7 +124,7 @@ class ProductDetails extends StatelessWidget {
                             const SizedBox(height: 20),
                             Center(
                               child: RatingBar.builder(
-                                initialRating: (cubit.averageRate?.toDouble() ?? 3),
+                                initialRating: (cubit.userRate!).toDouble(),
                                 minRating: 1,
                                 direction: Axis.horizontal,
                                 allowHalfRating: false,
