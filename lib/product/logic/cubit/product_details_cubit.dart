@@ -13,7 +13,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
   ProductDetailsCubit() : super(ProductDetailsInitial());
 
   final ApiServices _apiServices = ApiServices();
-
+  String userId = Supabase.instance.client.auth.currentUser!.id;
   List<RateModel> rates = [];
 
   int averageRate = 0;
@@ -31,7 +31,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
         rates.add(RateModel.fromJson(rate));
       }
       _getAverageRate();
-     _getUserRate();
+      _getUserRate();
       emit(GetRateSuccess());
     } catch (e) {
       log(e.toString());
@@ -45,19 +45,49 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
         averageRate += avgRate.rates!;
       }
     }
-    if (rates.isNotEmpty) {
-      averageRate = (averageRate / rates.length).round();
-    } else {
-      averageRate = 0;
-    }
+    averageRate = (averageRate / rates.length).round();
   }
 
   void _getUserRate() {
-    List<RateModel> userRate = rates.where(
-       (RateModel rate) => rate.forUser == Supabase.instance.client.auth.currentUser!.id,
-     ).toList();
-     if (userRate.isNotEmpty) {
-       this.userRate = userRate[0].rates!; // افترض أن القيمة الافتراضية هي 5
-     }
+    List<RateModel> userRate =
+        rates.where((RateModel rate) {
+          return rate.forUser == userId;
+        }).toList();
+    if (userRate.isNotEmpty) {
+      this.userRate = userRate[0].rates!; // افترض أن القيمة الافتراضية هي 5
+    }
+  }
+
+  bool _isUserRateExist({required String productId}) {
+    for (var rate in rates) {
+      if ((rate.forUser == userId) && (rate.forProduct == productId)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  Future<void> addOrupdateRate({required String productId ,required Map<String,dynamic >data }) async {
+    //path ثابت
+    String path="rates_table?select=*&for_product=eq.$productId&for_user=eq.$userId";
+    emit(addOrUpdateRateLoading());
+    try {
+      if (_isUserRateExist(productId: productId)) {
+        //patch == update
+        await _apiServices.patchData(
+          path,
+          data,
+        );
+      }else{
+        await _apiServices.postData(
+          path,
+          data,
+        );
+      }
+      emit(addOrUpdateRateSuccess());
+    } catch (e) {
+      log(e.toString());
+      emit(addOrUpdateRateError());
+    }
   }
 }
