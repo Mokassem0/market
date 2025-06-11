@@ -45,7 +45,10 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
         averageRate += avgRate.rates!;
       }
     }
-    averageRate = (averageRate / rates.length).round();
+    if (rates.isNotEmpty) {
+      
+  averageRate = (averageRate / rates.length).round();
+}
   }
 
   void _getUserRate() {
